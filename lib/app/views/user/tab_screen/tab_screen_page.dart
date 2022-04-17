@@ -10,15 +10,15 @@ class TabScreenPage extends GetView<TabScreenController> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(TabScreenController());
-    return SafeArea(
-      child: Scaffold(
-          appBar: const PreferredSize(
-            preferredSize: Size.fromHeight(kToolbarHeight),
-            child: CustomAppBar(
-              hasMenuItems: true,
-            ),
+    return Scaffold(
+        appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight),
+          child: CustomAppBar(
+            hasMenuItems: true,
           ),
-          body: PersistentTabView(
+        ),
+        body: Center(
+          child: PersistentTabView(
             context,
             controller: controller.persistentTabController,
             //buyer-seller-screen-changer
@@ -52,7 +52,7 @@ class TabScreenPage extends GetView<TabScreenController> {
             ),
             navBarStyle: NavBarStyle
                 .style6, // Choose the nav bar style with this property.
-          )),
-    );
+          ),
+        ));
   }
 }

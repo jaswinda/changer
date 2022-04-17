@@ -18,7 +18,7 @@ class DashBoardButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => onTap,
+      onTap: () => onTap!(),
       child: Padding(
         padding: EdgeInsets.all(AppSizes.percentWidth(2)),
         child: Container(
@@ -46,14 +46,16 @@ class DashBoardButton extends StatelessWidget {
                   SvgPicture.asset(
                     icon,
                     width: AppSizes.percentWidth(10),
-                    height: AppSizes.percentHeight(10),
+                    height: AppSizes.percentHeight(9),
                     color: primaryColor,
                   ),
-                  Text(
-                    label,
-                    style: TextStyle(
-                        fontSize: AppSizes.percentHeight(1.6),
-                        color: primaryColor),
+                  Center(
+                    child: Text(
+                      label,
+                      style: TextStyle(
+                          fontSize: AppSizes.percentHeight(1.5),
+                          color: primaryColor),
+                    ),
                   ),
                 ],
               ),

@@ -1,6 +1,13 @@
+import 'package:avsarmlm/app/utils/colors.dart';
 import 'package:avsarmlm/app/utils/components/balance_tile.dart';
 import 'package:avsarmlm/app/utils/components/dashboard_button.dart';
+import 'package:avsarmlm/app/utils/routes.dart';
+import 'package:avsarmlm/app/utils/sizes.dart';
+import 'package:avsarmlm/app/utils/transition.dart';
+import 'package:avsarmlm/app/views/user/accounting_details_screen.dart';
+import 'package:avsarmlm/app/views/user/order_records_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class HomePage extends StatefulWidget {
@@ -48,21 +55,37 @@ class _HomePageState extends State<HomePage> {
           child: Wrap(
             children: [
               const BalanceTile(heldBalance: '100', availableBalance: '200'),
-              DashBoardButton(
-                icon: 'assets/images/profile.svg',
-                label: 'Personal Info',
-                onTap: () => {},
+              Padding(
+                padding: EdgeInsets.all(AppSizes.percentWidth(3)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    roundButton(
+                        label: 'Withdraw',
+                        onPressed: () => Get.toNamed(Routes.withdraw)),
+                    roundButton(
+                        label: 'Deposit',
+                        onPressed: () => Get.toNamed(Routes.accountingDetails)),
+                  ],
+                ),
               ),
+              DashBoardButton(
+                  icon: 'assets/images/profile.svg',
+                  label: 'Personal Info',
+                  onTap: () => {}),
               DashBoardButton(
                 icon: 'assets/images/order.svg',
                 label: 'Order Record',
-                onTap: () => {},
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AccountingDetailsScreen(),
+                    )),
               ),
               DashBoardButton(
-                icon: 'assets/images/account.svg',
-                label: 'Accounting Details',
-                onTap: () => {},
-              ),
+                  icon: 'assets/images/account.svg',
+                  label: 'Accounting Details',
+                  onTap: () => Get.toNamed(Routes.accountingDetails)),
               DashBoardButton(
                 icon: 'assets/images/team.svg',
                 label: 'Team',
@@ -79,26 +102,29 @@ class _HomePageState extends State<HomePage> {
                 onTap: () => {},
               ),
             ],
-            // children: [
-            //   DashBoardButton(
-            //       color: Colors.orange,
-            //       icon: const Icon(Icons.ac_unit),
-            //       text: 'text',
-            //       onPressed: () {}),
-            //   DashBoardButton(
-            //       color: Colors.orange,
-            //       icon: const Icon(Icons.ac_unit),
-            //       text: 'text',
-            //       onPressed: () {}),
-
-            // ListView.builder(
-            //   itemBuilder: (c, i) => Card(child: Center(child: Text(items[i]))),
-            //   itemExtent: 100.0,
-            //   itemCount: items.length,
-            // ),
-
-            // ],
           )),
+    );
+  }
+
+  Widget roundButton({required String label, required Function onPressed}) {
+    return InkWell(
+      onTap: () => onPressed(),
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20.0),
+            //shadow
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.grey,
+                blurRadius: 10.0, // has the effect of softening the shadow
+              )
+            ],
+            color: primaryColor),
+        child: Padding(
+          padding: EdgeInsets.all(AppSizes.percentWidth(3)),
+          child: Text(label, style: const TextStyle(color: Colors.white)),
+        ),
+      ),
     );
   }
 }

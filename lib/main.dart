@@ -34,7 +34,9 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
         ),
         initialBinding: InitialBindings(),
-        defaultTransition: Transition.fadeIn,
+        defaultTransition: Transition.rightToLeft,
+        //duration of the transition
+        transitionDuration: const Duration(milliseconds: 350),
         //get the debug
         debugShowCheckedModeBanner: false,
         //transition
