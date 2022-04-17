@@ -20,44 +20,49 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-        controller: controller,
-        obscureText: obscureText,
-        keyboardType: isPhoneNumber ? TextInputType.phone : TextInputType.text,
-        inputFormatters: isPhoneNumber
-            ? [
-                FilteringTextInputFormatter.allow(RegExp('[0-9.,]+')),
-              ]
-            : null,
-        validator: (value) => value!.isEmpty
-            ? 'Please fill the field'
-            : (customValidator != null ? customValidator(value) : null),
-        decoration: InputDecoration(
-            border: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              borderSide: BorderSide(color: Colors.transparent),
-            ),
-            focusedBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              borderSide: BorderSide(color: Colors.yellow),
-            ),
-            enabledBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              borderSide: BorderSide(color: Colors.transparent),
-            ),
-            //error border
-            errorBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              borderSide: BorderSide(color: Colors.transparent),
-            ),
-            //error focused border
-            errorStyle: TextStyle(
-                color: Colors.red,
-                fontSize: AppSizes.percentWidth(3.0),
-                //italics
-                fontStyle: FontStyle.italic),
-            hintText: hintText,
-            fillColor: Colors.black12,
-            filled: true));
+    return Padding(
+      padding: EdgeInsets.only(
+          top: AppSizes.percentHeight(1), bottom: AppSizes.percentHeight(1)),
+      child: TextFormField(
+          controller: controller,
+          obscureText: obscureText,
+          keyboardType:
+              isPhoneNumber ? TextInputType.phone : TextInputType.text,
+          inputFormatters: isPhoneNumber
+              ? [
+                  FilteringTextInputFormatter.allow(RegExp('[0-9.,]+')),
+                ]
+              : null,
+          validator: (value) => value!.isEmpty
+              ? 'Please fill the field'
+              : (customValidator != null ? customValidator(value) : null),
+          decoration: InputDecoration(
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                borderSide: BorderSide(color: Colors.transparent),
+              ),
+              focusedBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                borderSide: BorderSide(color: Colors.yellow),
+              ),
+              enabledBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                borderSide: BorderSide(color: Colors.transparent),
+              ),
+              //error border
+              errorBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                borderSide: BorderSide(color: Colors.transparent),
+              ),
+              //error focused border
+              errorStyle: TextStyle(
+                  color: Colors.red,
+                  fontSize: AppSizes.percentWidth(2.5),
+                  //italics
+                  fontStyle: FontStyle.italic),
+              hintText: hintText,
+              fillColor: Colors.black12,
+              filled: true)),
+    );
   }
 }

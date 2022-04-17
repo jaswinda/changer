@@ -1,9 +1,10 @@
 import 'package:avsarmlm/app/controllers/auth_controller.dart';
+import 'package:avsarmlm/app/utils/colors.dart';
 import 'package:avsarmlm/app/utils/components/custom_button.dart';
+import 'package:avsarmlm/app/utils/components/custom_label.dart';
 import 'package:avsarmlm/app/utils/components/custom_textformfield.dart';
 import 'package:avsarmlm/app/utils/sizes.dart';
-import 'package:avsarmlm/app/utils/transition.dart';
-import 'package:avsarmlm/app/views/guest/signup_page.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,19 +27,7 @@ class SignupPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: AppSizes.percentHeight(4)),
-                    child: Hero(
-                      tag: 'logo',
-                      child: Image.asset(
-                        'assets/images/logo.png',
-                        width: AppSizes.percentWidth(50),
-                        height: AppSizes.percentHeight(12),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
+                  SizedBox(height: AppSizes.percentHeight(3)),
                   Padding(
                     padding: EdgeInsets.all(AppSizes.percentHeight(1)),
                     child: Align(
@@ -47,7 +36,7 @@ class SignupPage extends StatelessWidget {
                           style: TextStyle(
                               fontSize: AppSizes.percentHeight(3),
                               fontWeight: FontWeight.bold,
-                              color: Colors.black)),
+                              color: primaryColor)),
                     ),
                   ),
                   Align(
@@ -61,17 +50,48 @@ class SignupPage extends StatelessWidget {
                     padding: EdgeInsets.all(AppSizes.percentWidth(3.0)),
                     child: Column(
                       children: [
-                        Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Email',
-                              style: TextStyle(
-                                fontSize: AppSizes.percentHeight(2.5),
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black,
+                        const Hero(
+                            tag: 'username_label',
+                            child: CustomLabel(text: 'Username')),
+                        CustomTextField(
+                          controller: pass,
+                          hintText: 'Please choose a username',
+                        ),
+                        const CustomLabel(text: 'Phone'),
+                        Row(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Colors.grey,
+                                      width: AppSizes.percentWidth(0.5)),
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: CountryCodePicker(
+                                onChanged: print,
+                                // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                                initialSelection: 'IN',
+                                favorite: const ['+91', 'IN'],
+                                // optional. Shows only country name and flag
+                                showCountryOnly: false,
+                                // optional. Shows only country name and flag when popup is closed.
+                                showOnlyCountryWhenClosed: false,
+                                // optional. aligns the flag and the Text left
+                                alignLeft: false,
                               ),
-                            )),
-                        SizedBox(height: AppSizes.percentHeight(1)),
+                            ),
+                            SizedBox(
+                              width: AppSizes.percentWidth(2),
+                            ),
+                            Expanded(
+                              child: CustomTextField(
+                                controller: pass,
+                                isPhoneNumber: true,
+                                hintText: 'Phone number',
+                              ),
+                            ),
+                          ],
+                        ),
+                        const CustomLabel(text: 'Email'),
                         CustomTextField(
                           customValidator: (value) {
                             //email validation
@@ -84,24 +104,21 @@ class SignupPage extends StatelessWidget {
                           obscureText: false,
                           hintText: 'Please enter your email',
                         ),
-                        SizedBox(height: AppSizes.percentHeight(2)),
-                        Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Password',
-                              style: TextStyle(
-                                fontSize: AppSizes.percentHeight(2.5),
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black,
-                              ),
-                            )),
-                        SizedBox(height: AppSizes.percentHeight(1)),
+                        const Hero(
+                            tag: 'password_label',
+                            child: CustomLabel(text: 'Password')),
                         CustomTextField(
                           controller: pass,
                           obscureText: true,
                           hintText: 'Please enter your password',
                         ),
-                        const SizedBox(height: 40.0),
+                        const CustomLabel(text: 'Confirm Password'),
+                        CustomTextField(
+                          controller: pass,
+                          obscureText: true,
+                          hintText: 'Please enter your password',
+                        ),
+                        SizedBox(height: AppSizes.percentHeight(3)),
                         CustomButton(
                             onTap: () {
                               if (_formKey.currentState!.validate()) {
@@ -132,6 +149,16 @@ class SignupPage extends StatelessWidget {
                       ),
                     ],
                   ),
+                  Hero(
+                    tag: 'logo',
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      width: AppSizes.percentWidth(50),
+                      height: AppSizes.percentHeight(8),
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                  SizedBox(height: AppSizes.percentHeight(3)),
                 ],
               ),
             ),

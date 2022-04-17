@@ -1,3 +1,4 @@
+import 'package:avsarmlm/app/utils/colors.dart';
 import 'package:avsarmlm/app/utils/sizes.dart';
 import 'package:avsarmlm/app/views/guest/login_page.dart';
 import 'package:avsarmlm/app/views/guest/signup_page.dart';
@@ -45,7 +46,7 @@ class TabScreenController extends GetxController {
       textStyle: TextStyle(fontSize: AppSizes.percentWidth(2)),
       icon: icon,
       title: (title),
-      activeColorPrimary: Colors.black,
+      activeColorPrimary:primaryColor,
       inactiveColorPrimary: CupertinoColors.systemGrey,
     );
   }

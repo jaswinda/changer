@@ -1,3 +1,4 @@
+import 'package:avsarmlm/app/utils/colors.dart';
 import 'package:avsarmlm/app/utils/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,7 @@ class BalanceTile extends StatelessWidget {
               colorFilter: new ColorFilter.mode(
                   Colors.black.withOpacity(0.2), BlendMode.dstIn),
             ),
-            color: Colors.black),
+            color: primaryColor),
         child: Padding(
           padding: EdgeInsets.symmetric(
               horizontal: AppSizes.percentWidth(5),

@@ -1,12 +1,13 @@
 import 'package:avsarmlm/app/controllers/auth_controller.dart';
+import 'package:avsarmlm/app/utils/colors.dart';
 import 'package:avsarmlm/app/utils/components/custom_button.dart';
+import 'package:avsarmlm/app/utils/components/custom_label.dart';
 import 'package:avsarmlm/app/utils/components/custom_textformfield.dart';
 import 'package:avsarmlm/app/utils/routes.dart';
 import 'package:avsarmlm/app/utils/sizes.dart';
 import 'package:avsarmlm/app/utils/transition.dart';
 import 'package:avsarmlm/app/views/guest/signup_page.dart';
 import 'package:avsarmlm/main.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -37,7 +38,7 @@ class LoginPage extends StatelessWidget {
                           style: TextStyle(
                               fontSize: AppSizes.percentHeight(3),
                               fontWeight: FontWeight.bold,
-                              color: Colors.black)),
+                              color: primaryColor)),
                     ),
                   ),
                   Align(
@@ -51,47 +52,27 @@ class LoginPage extends StatelessWidget {
                     padding: EdgeInsets.all(AppSizes.percentWidth(3.0)),
                     child: Column(
                       children: [
-                        Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Email',
-                              style: TextStyle(
-                                fontSize: AppSizes.percentHeight(2.5),
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black,
-                              ),
-                            )),
-                        SizedBox(height: AppSizes.percentHeight(1)),
+                        const Hero(
+                            tag: 'username_label',
+                            child: CustomLabel(text: 'Username')),
                         CustomTextField(
                           customValidator: (value) {
                             //email validation
-                            final bool isValid = EmailValidator.validate(value);
-                            if (!isValid) {
-                              return 'Please enter a valid email';
-                            }
+                            return null;
                           },
                           controller: user,
                           obscureText: false,
-                          hintText: 'Please enter your email',
+                          hintText: 'Please enter your username',
                         ),
-                        SizedBox(height: AppSizes.percentHeight(2)),
-                        Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Password',
-                              style: TextStyle(
-                                fontSize: AppSizes.percentHeight(2.5),
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black,
-                              ),
-                            )),
-                        SizedBox(height: AppSizes.percentHeight(1)),
+                        const Hero(
+                            tag: 'password_label',
+                            child: CustomLabel(text: 'Password')),
                         CustomTextField(
                           controller: pass,
                           obscureText: true,
                           hintText: 'Please enter your password',
                         ),
-                        const SizedBox(height: 40.0),
+                        SizedBox(height: AppSizes.percentHeight(2)),
                         CustomButton(
                             onTap: () {
                               if (_formKey.currentState!.validate()) {

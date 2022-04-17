@@ -1,8 +1,5 @@
-import 'package:avsarmlm/app/utils/commons.dart';
 import 'package:avsarmlm/app/utils/components/balance_tile.dart';
-import 'package:avsarmlm/app/utils/components/custom_app_bar.dart';
 import 'package:avsarmlm/app/utils/components/dashboard_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -49,14 +46,38 @@ class _HomePageState extends State<HomePage> {
           onRefresh: _onRefresh,
           onLoading: _onLoading,
           child: Wrap(
-            children: const [
-              BalanceTile(heldBalance: '100', availableBalance: '200'),
-              DashBoardButton(),
-              DashBoardButton(),
-              DashBoardButton(),
-              DashBoardButton(),
-              DashBoardButton(),
-              DashBoardButton(),
+            children: [
+              const BalanceTile(heldBalance: '100', availableBalance: '200'),
+              DashBoardButton(
+                icon: 'assets/images/profile.svg',
+                label: 'Personal Info',
+                onTap: () => {},
+              ),
+              DashBoardButton(
+                icon: 'assets/images/order.svg',
+                label: 'Order Record',
+                onTap: () => {},
+              ),
+              DashBoardButton(
+                icon: 'assets/images/account.svg',
+                label: 'Accounting Details',
+                onTap: () => {},
+              ),
+              DashBoardButton(
+                icon: 'assets/images/team.svg',
+                label: 'Team',
+                onTap: () => {},
+              ),
+              DashBoardButton(
+                icon: 'assets/images/recharge.svg',
+                label: 'Recharge Reports',
+                onTap: () => {},
+              ),
+              DashBoardButton(
+                icon: 'assets/images/invite.svg',
+                label: 'Friends Invitations',
+                onTap: () => {},
+              ),
             ],
             // children: [
             //   DashBoardButton(

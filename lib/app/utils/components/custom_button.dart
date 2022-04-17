@@ -1,3 +1,4 @@
+import 'package:avsarmlm/app/utils/colors.dart';
 import 'package:avsarmlm/app/utils/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class CustomButton extends StatelessWidget {
       child: Container(
         height: AppSizes.percentHeight(7),
         decoration: BoxDecoration(
-          color: Colors.black,
+          color: primaryColor,
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Center(
