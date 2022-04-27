@@ -1,8 +1,10 @@
-import 'package:avsarmlm/app/utils/colors.dart';
-import 'package:avsarmlm/app/utils/components/custom_button.dart';
-import 'package:avsarmlm/app/utils/components/custom_label.dart';
-import 'package:avsarmlm/app/utils/components/custom_textformfield.dart';
-import 'package:avsarmlm/app/utils/sizes.dart';
+import 'package:changer/app/utils/colors.dart';
+import 'package:changer/app/utils/components/custom_button.dart';
+import 'package:changer/app/utils/components/custom_label.dart';
+import 'package:changer/app/utils/components/custom_textformfield.dart';
+import 'package:changer/app/utils/components/notice.dart';
+import 'package:changer/app/utils/components/payment_method.dart';
+import 'package:changer/app/utils/sizes.dart';
 import 'package:flutter/material.dart';
 
 class WithdrawScreen extends StatelessWidget {
@@ -17,90 +19,88 @@ class WithdrawScreen extends StatelessWidget {
         foregroundColor: primaryColor,
         title: const Text('Withdraw'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(AppSizes.percentWidth(2)),
-        child: Column(
-          children: [
-            notice(
-                text: 'Withdrawal request will be processed within 24 hours'),
-            Container(
-              padding: EdgeInsets.all(AppSizes.percentWidth(2)),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(3.0),
-                //shadow
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 3,
-                    offset: const Offset(0, 1), // changes position of shadow
-                  ),
-                ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(AppSizes.percentWidth(2)),
+          child: Column(
+            children: [
+              Notice(
+                onCancel: () {},
+                isHidden: false,
+                text: 'Withdrawal request will be processed within 24 hours',
               ),
-              child: Column(
-                children: [
-                  const CustomLabel(text: 'Withdrawal Amount'),
-                  CustomTextField(
-                      isPhoneNumber: true,
-                      controller: amountController,
-                      hintText: '0.00'),
-                  // const CustomLabel(text: 'Withdrawal Method'),
-                  labelTile(label: 'Balance: ', value: 'value'),
-                  labelTile(label: 'Orders Completed today: ', value: 'value'),
-                  labelTile(
-                      label: 'Number of Withdrawals today', value: 'value'),
-                  SizedBox(height: AppSizes.percentHeight(2)),
-                  const CustomLabel(text: 'Selected Withdrawal Method'),
-                  CustomButton(onTap: () {}, label: 'Confirm')
-                ],
+              const CustomLabel(text: 'Selected Withdrawal Method: '),
+              SizedBox(
+                height: AppSizes.percentHeight(2),
               ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+              const Hero(
+                tag: 'method1',
+                child: PaymentMethod(
+                  isSelected: true,
+                  address: '0x00x00x00x00x00x00x00x00x00x00x0',
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    const CustomLabel(text: 'Withdrawal Amount'),
+                    CustomTextField(
+                        isPhoneNumber: true,
+                        controller: amountController,
+                        hintText: '0.00'),
+                    //horizontal list of amounts
+                    SizedBox(
+                      height: AppSizes.percentHeight(6),
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: InkWell(
+                              onTap: () => {
+                                amountController.text =
+                                    ((index + 1) * 100).toString()
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    //shadow
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        blurRadius:
+                                            10.0, // has the effect of softening the shadow
+                                      )
+                                    ],
+                                    color: Colors.white),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(((index + 1) * 100).toString()),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                        itemCount: 10,
+                      ),
+                    ),
+                    const CustomLabel(text: 'Withdrawal Fee'),
+                    // const CustomLabel(text: 'Withdrawal Method'),
+                    labelTile(label: 'Balance: ', value: 'value'),
+                    labelTile(
+                        label: 'Orders Completed today: ', value: 'value'),
+                    labelTile(
+                        label: 'Number of Withdrawals today', value: 'value'),
+                    SizedBox(height: AppSizes.percentHeight(2)),
 
-  Widget notice({required String text}) {
-    return Padding(
-      padding: EdgeInsets.all(AppSizes.percentWidth(2)),
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Container(
-            padding: EdgeInsets.all(AppSizes.percentWidth(2)),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              //shadow
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  blurRadius: 5,
-                  spreadRadius: 1,
-                  offset: const Offset(0, 1),
-                ),
-              ],
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(AppSizes.percentWidth(2)),
-              child: Text(
-                text,
-                style: TextStyle(
-                  fontSize: AppSizes.percentHeight(1.5),
-                  fontWeight: FontWeight.w600,
-                  color: primaryColor,
+                    CustomButton(onTap: () {}, label: 'Confirm')
+                  ],
                 ),
               ),
-            ),
+            ],
           ),
-          Positioned(
-            top: -AppSizes.percentHeight(1),
-            right: 0,
-            child: const Icon(Icons.cancel_outlined),
-          ),
-        ],
+        ),
       ),
     );
   }

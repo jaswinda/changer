@@ -1,13 +1,13 @@
-import 'package:avsarmlm/app/controllers/auth_controller.dart';
-import 'package:avsarmlm/app/utils/colors.dart';
-import 'package:avsarmlm/app/utils/components/custom_button.dart';
-import 'package:avsarmlm/app/utils/components/custom_label.dart';
-import 'package:avsarmlm/app/utils/components/custom_textformfield.dart';
-import 'package:avsarmlm/app/utils/routes.dart';
-import 'package:avsarmlm/app/utils/sizes.dart';
-import 'package:avsarmlm/app/utils/transition.dart';
-import 'package:avsarmlm/app/views/guest/signup_page.dart';
-import 'package:avsarmlm/main.dart';
+import 'package:changer/app/controllers/auth_controller.dart';
+import 'package:changer/app/utils/colors.dart';
+import 'package:changer/app/utils/components/custom_button.dart';
+import 'package:changer/app/utils/components/custom_label.dart';
+import 'package:changer/app/utils/components/custom_textformfield.dart';
+import 'package:changer/app/utils/routes.dart';
+import 'package:changer/app/utils/sizes.dart';
+import 'package:changer/app/utils/transition.dart';
+import 'package:changer/app/views/guest/signup_page.dart';
+import 'package:changer/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -29,7 +29,16 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: AppSizes.percentHeight(10)),
+                  SizedBox(height: AppSizes.percentHeight(5)),
+                  Hero(
+                    tag: 'logo',
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      width: AppSizes.percentWidth(50),
+                      height: AppSizes.percentHeight(20),
+                      fit: BoxFit.contain,
+                    ),
+                  ),
                   Padding(
                     padding: EdgeInsets.all(AppSizes.percentHeight(2)),
                     child: Align(
@@ -106,15 +115,6 @@ class LoginPage extends StatelessWidget {
                                 fontSize: AppSizes.percentHeight(2))),
                       ),
                     ],
-                  ),
-                  Hero(
-                    tag: 'logo',
-                    child: Image.asset(
-                      'assets/images/logo.png',
-                      width: AppSizes.percentWidth(50),
-                      height: AppSizes.percentHeight(20),
-                      fit: BoxFit.contain,
-                    ),
                   ),
                 ],
               ),

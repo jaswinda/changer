@@ -1,4 +1,4 @@
-import 'package:avsarmlm/app/utils/sizes.dart';
+import 'package:changer/app/utils/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

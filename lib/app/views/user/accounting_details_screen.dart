@@ -1,5 +1,5 @@
-import 'package:avsarmlm/app/utils/colors.dart';
-import 'package:avsarmlm/app/utils/sizes.dart';
+import 'package:changer/app/utils/colors.dart';
+import 'package:changer/app/utils/sizes.dart';
 import 'package:flutter/material.dart';
 
 class AccountingDetailsScreen extends StatelessWidget {

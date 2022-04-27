@@ -1,5 +1,5 @@
-import 'package:avsarmlm/app/utils/colors.dart';
-import 'package:avsarmlm/app/utils/sizes.dart';
+import 'package:changer/app/utils/colors.dart';
+import 'package:changer/app/utils/sizes.dart';
 import 'package:flutter/material.dart';
 
 class OrderRecordsScreen extends StatelessWidget {
@@ -10,7 +10,6 @@ class OrderRecordsScreen extends StatelessWidget {
     return DefaultTabController(
         length: 3,
         child: Scaffold(
-          //preferedsize appbar
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(AppSizes.percentHeight(8)),
             child: AppBar(
@@ -37,7 +36,6 @@ class OrderRecordsScreen extends StatelessWidget {
               ),
             ),
           ),
-
           body: const TabBarView(
             children: [
               Icon(Icons.flight, size: 350),

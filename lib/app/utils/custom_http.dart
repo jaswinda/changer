@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:avsarmlm/app/controllers/auth_controller.dart';
-import 'package:avsarmlm/app/utils/commons.dart';
+import 'package:changer/app/controllers/auth_controller.dart';
+import 'package:changer/app/utils/commons.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 

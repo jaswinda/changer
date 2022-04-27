@@ -1,5 +1,5 @@
-import 'package:avsarmlm/app/utils/routes.dart';
-import 'package:avsarmlm/main.dart';
+import 'package:changer/app/utils/routes.dart';
+import 'package:changer/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/routes/route_middleware.dart';

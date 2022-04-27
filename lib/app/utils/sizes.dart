@@ -13,4 +13,6 @@ class AppSizes {
   static double percentHeight(double val) => val.h;
   static double percentWidth(double val) => val.w;
   static double fontSize(double val) => val.sp;
+
+  static percentFontSize(double d) {}
 }

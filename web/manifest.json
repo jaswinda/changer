@@ -1,6 +1,6 @@
 {
-    "name": "avsarmlm",
-    "short_name": "avsarmlm",
+    "name": "changer",
+    "short_name": "changer",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

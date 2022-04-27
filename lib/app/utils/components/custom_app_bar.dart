@@ -1,7 +1,7 @@
-import 'package:avsarmlm/app/utils/commons.dart';
-import 'package:avsarmlm/app/utils/components/dashboard_button.dart';
-import 'package:avsarmlm/app/utils/sizes.dart';
-import 'package:avsarmlm/main.dart';
+import 'package:changer/app/utils/commons.dart';
+import 'package:changer/app/utils/components/home_dashboard_button.dart';
+import 'package:changer/app/utils/sizes.dart';
+import 'package:changer/main.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';

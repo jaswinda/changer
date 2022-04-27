@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.avsarmlm">
+    package="com.example.changer">
    <application
-        android:label="avsarmlm"
+        android:label="changer"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:avsarmlm/app/utils/apis.dart';
-import 'package:avsarmlm/app/utils/commons.dart';
-import 'package:avsarmlm/app/utils/custom_http.dart';
+import 'package:changer/app/utils/apis.dart';
+import 'package:changer/app/utils/commons.dart';
+import 'package:changer/app/utils/custom_http.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

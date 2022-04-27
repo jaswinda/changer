@@ -1,10 +1,15 @@
-import 'package:avsarmlm/app/middlewares/auth_middleware.dart';
-import 'package:avsarmlm/app/views/guest/login_page.dart';
-import 'package:avsarmlm/app/views/user/accounting_details_screen.dart';
-import 'package:avsarmlm/app/views/user/home_page.dart';
-import 'package:avsarmlm/app/views/user/order_records_screen.dart';
-import 'package:avsarmlm/app/views/user/tab_screen/tab_screen_page.dart';
-import 'package:avsarmlm/app/views/user/withdraw_screen.dart';
+import 'package:changer/app/middlewares/auth_middleware.dart';
+import 'package:changer/app/views/user/add_withdraw_methd.dart';
+import 'package:changer/app/views/guest/login_page.dart';
+import 'package:changer/app/views/user/accounting_details_screen.dart';
+import 'package:changer/app/views/user/deposit_screen.dart';
+import 'package:changer/app/views/user/invitation_screen.dart';
+import 'package:changer/app/views/user/order_records_screen.dart';
+import 'package:changer/app/views/user/recharge_record_screen.dart';
+import 'package:changer/app/views/user/select_widraw_method.dart';
+import 'package:changer/app/views/user/tab_screen/tab_screen_page.dart';
+import 'package:changer/app/views/user/team_reports_screen.dart';
+import 'package:changer/app/views/user/withdraw_screen.dart';
 import 'package:get/get.dart';
 
 class Routes {
@@ -14,7 +19,12 @@ class Routes {
   static const String orderRecord = '/order-record';
   static const String accountingDetails = '/accounting-details';
   static const String withdraw = '/withdraw';
+  static const String addWithdrawMethod = '/add-withdraw-method';
+  static const String selectWithdrawMethod = '/select-withdraw-method';
   static const String deposit = '/deposit';
+  static const String teamReport = '/team-report';
+  static const String rechargeReports = '/recharge-reports';
+  static const String invitation = '/invitation';
 
   static const String forgotPassword = '/forgot-password';
   static const String dashboard = '/dashboard';
@@ -47,7 +57,27 @@ class Routes {
         middlewares: [AuthMiddleware()]),
     GetPage(
         name: deposit,
-        page: () => WithdrawScreen(),
+        page: () => const DepositScreen(),
+        middlewares: [AuthMiddleware()]),
+    GetPage(
+        name: addWithdrawMethod,
+        page: () => AddWithdraw(),
+        middlewares: [AuthMiddleware()]),
+    GetPage(
+        name: selectWithdrawMethod,
+        page: () => const SelectWithdrawMethod(),
+        middlewares: [AuthMiddleware()]),
+    GetPage(
+        name: teamReport,
+        page: () => const TeamReportScreen(),
+        middlewares: [AuthMiddleware()]),
+    GetPage(
+        name: rechargeReports,
+        page: () => const RechargeRecord(),
+        middlewares: [AuthMiddleware()]),
+    GetPage(
+        name: invitation,
+        page: () => const InvitationScreen(),
         middlewares: [AuthMiddleware()]),
     GetPage(name: login, page: () => LoginPage()),
     GetPage(name: forgotPassword, page: () => LoginPage()),

@@ -1,9 +1,9 @@
-import 'package:avsarmlm/app/controllers/auth_controller.dart';
-import 'package:avsarmlm/app/utils/colors.dart';
-import 'package:avsarmlm/app/utils/components/custom_button.dart';
-import 'package:avsarmlm/app/utils/components/custom_label.dart';
-import 'package:avsarmlm/app/utils/components/custom_textformfield.dart';
-import 'package:avsarmlm/app/utils/sizes.dart';
+import 'package:changer/app/controllers/auth_controller.dart';
+import 'package:changer/app/utils/colors.dart';
+import 'package:changer/app/utils/components/custom_button.dart';
+import 'package:changer/app/utils/components/custom_label.dart';
+import 'package:changer/app/utils/components/custom_textformfield.dart';
+import 'package:changer/app/utils/sizes.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,16 @@ class SignupPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: AppSizes.percentHeight(3)),
+                  Hero(
+                    tag: 'logo',
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      width: AppSizes.percentWidth(50),
+                      height: AppSizes.percentHeight(8),
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                  SizedBox(height: AppSizes.percentHeight(1)),
                   Padding(
                     padding: EdgeInsets.all(AppSizes.percentHeight(1)),
                     child: Align(
@@ -149,16 +158,7 @@ class SignupPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Hero(
-                    tag: 'logo',
-                    child: Image.asset(
-                      'assets/images/logo.png',
-                      width: AppSizes.percentWidth(50),
-                      height: AppSizes.percentHeight(8),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                  SizedBox(height: AppSizes.percentHeight(3)),
+                  SizedBox(height: AppSizes.percentHeight(2)),
                 ],
               ),
             ),

@@ -1,4 +1,5 @@
-import 'package:avsarmlm/app/utils/components/custom_app_bar.dart';
+import 'package:changer/app/utils/components/custom_app_bar.dart';
+import 'package:changer/app/utils/sizes.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -17,10 +18,11 @@ class TabScreenPage extends GetView<TabScreenController> {
             hasMenuItems: true,
           ),
         ),
-        body: Center(
+        body: SizedBox(
           child: PersistentTabView(
             context,
             controller: controller.persistentTabController,
+            padding: NavBarPadding.all(AppSizes.percentWidth(1)),
             //buyer-seller-screen-changer
             screens: controller.tabScreen,
             items: controller.navBarsItems(),
@@ -31,11 +33,19 @@ class TabScreenPage extends GetView<TabScreenController> {
             resizeToAvoidBottomInset:
                 true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
             stateManagement: true, // Default is true.
-            hideNavigationBarWhenKeyboardShows:
-                true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+            hideNavigationBarWhenKeyboardShows: true,
+            // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
             decoration: NavBarDecoration(
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(0),
               colorBehindNavBar: Colors.white,
+              boxShadow: [
+                const BoxShadow(
+                  color: Colors.grey,
+                  offset: Offset(3, 3),
+                  blurRadius: 5.0,
+                  spreadRadius: 1.0,
+                ),
+              ],
             ),
             popAllScreensOnTapOfSelectedTab: true,
             popActionScreens: PopActionScreensType.once,
@@ -44,6 +54,7 @@ class TabScreenPage extends GetView<TabScreenController> {
               duration: Duration(milliseconds: 200),
               curve: Curves.ease,
             ),
+
             screenTransitionAnimation: const ScreenTransitionAnimation(
               // Screen transition animation on change of selected tab.
               animateTabTransition: false,
@@ -51,7 +62,7 @@ class TabScreenPage extends GetView<TabScreenController> {
               duration: Duration(milliseconds: 200),
             ),
             navBarStyle: NavBarStyle
-                .style6, // Choose the nav bar style with this property.
+                .style15, // Choose the nav bar style with this property.
           ),
         ));
   }

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(avsarmlm LANGUAGES CXX)
+project(changer LANGUAGES CXX)
 
-set(BINARY_NAME "avsarmlm")
+set(BINARY_NAME "changer")
 
 cmake_policy(SET CMP0063 NEW)
 

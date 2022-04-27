@@ -1,5 +1,4 @@
-import 'package:avsarmlm/app/bindings/initial_bindings.dart';
-import 'package:avsarmlm/app/controllers/auth_controller.dart';
+import 'package:changer/app/bindings/initial_bindings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';

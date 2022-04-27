@@ -1,5 +1,5 @@
-import 'package:avsarmlm/app/utils/colors.dart';
-import 'package:avsarmlm/app/utils/sizes.dart';
+import 'package:changer/app/utils/colors.dart';
+import 'package:changer/app/utils/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -41,6 +41,7 @@ class DashBoardButton extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(AppSizes.percentWidth(2)),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   //svg
                   SvgPicture.asset(
@@ -49,12 +50,15 @@ class DashBoardButton extends StatelessWidget {
                     height: AppSizes.percentHeight(9),
                     color: primaryColor,
                   ),
+                  //Flexible Text
                   Center(
                     child: Text(
                       label,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppSizes.percentHeight(1.5),
-                          color: primaryColor),
+                        fontSize: AppSizes.percentHeight(1.5),
+                        color: primaryColor,
+                      ),
                     ),
                   ),
                 ],

@@ -1,4 +1,4 @@
-name: avsarmlm
+name: changer
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -43,6 +43,11 @@ dependencies:
   persistent_bottom_nav_bar: ^4.0.2
   flutter_svg: ^1.0.3
   font_awesome_flutter: ^9.2.0
+  carousel_slider: ^4.0.0
+  pin_code_fields: ^7.4.0
+  awesome_card: ^1.1.7
+  image_picker: ^0.8.4+10
+  syncfusion_flutter_datepicker: ^20.1.50
 
 dev_dependencies:
   flutter_test:
